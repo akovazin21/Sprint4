@@ -26,6 +26,7 @@ public class OrderPage {
     private final By orderButton = By.xpath(".//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Заказать']");
     private final By confirmButton = By.xpath(".//button[text()='Да']");
     private final By orderSuccessModal = By.className("Order_ModalHeader__3FDaJ");
+    private final By orderSuccessMessage = By.xpath("//div[contains(@class, 'Order_ModalHeader__3FDaJ')]//div[contains(text(), 'Заказ оформлен')]");
 
     public OrderPage(WebDriver driver) {
         this.driver = driver;
@@ -66,5 +67,9 @@ public class OrderPage {
 
     public boolean isOrderSuccessModalDisplayed() {
         return driver.findElement(orderSuccessModal).isDisplayed();
+    }
+
+    public String getOrderSuccessMessage() {
+        return driver.findElement(orderSuccessMessage).getText();
     }
 }

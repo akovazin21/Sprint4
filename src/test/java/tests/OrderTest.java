@@ -16,6 +16,7 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(Parameterized.class)
 public class OrderTest {
+    public static final String URL = "https://qa-scooter.praktikum-services.ru/";
     public WebDriver driver;
     private final String name;
     private final String surname;
@@ -58,7 +59,7 @@ public class OrderTest {
     @Before
     public void setUp() {
         driver = WebDriverFactory.create("chrome");
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+        driver.get(URL);
     }
 
     @Test
@@ -85,6 +86,12 @@ public class OrderTest {
         // Проверяем, что появилось окно успешного заказа
         assertTrue("Окно успешного заказа не отображается",
                 orderPage.isOrderSuccessModalDisplayed());
+
+        // Добавляем проверку текста сообщения
+        String expectedMessage = "Заказ оформлен";
+        String actualMessage = orderPage.getOrderSuccessMessage();
+        assertEquals("Сообщение об успешном заказе не соответствует ожидаемому",
+                expectedMessage, actualMessage);
     }
 
     @After

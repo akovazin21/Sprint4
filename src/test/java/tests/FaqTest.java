@@ -14,6 +14,7 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(Parameterized.class)
 public class FaqTest {
+    public static final String URL = "https://qa-scooter.praktikum-services.ru/";
     private WebDriver driver;
     private final int questionIndex;
     private final String expectedAnswer;
@@ -40,7 +41,7 @@ public class FaqTest {
     @Before
     public void setUp() {
         driver = WebDriverFactory.create("chrome");
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+        driver.get(URL);
     }
 
     @Test

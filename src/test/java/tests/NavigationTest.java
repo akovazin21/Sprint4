@@ -12,12 +12,13 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class NavigationTest {
+    public static final String URL = "https://qa-scooter.praktikum-services.ru/";
     private WebDriver driver;
 
     @Before
     public void setUp() {
         driver = WebDriverFactory.create("chrome");
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+        driver.get(URL);
     }
 
     @Test
@@ -26,7 +27,7 @@ public class NavigationTest {
         mainPage.clickScooterLogo();
 
         assertEquals("Неверный URL после клика на логотип Самоката",
-                "https://qa-scooter.praktikum-services.ru/",
+                URL,
                 driver.getCurrentUrl());
     }
 
