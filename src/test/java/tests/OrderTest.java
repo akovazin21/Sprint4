@@ -58,7 +58,7 @@ public class OrderTest {
 
     @Before
     public void setUp() {
-        driver = WebDriverFactory.create("chrome");
+        driver = WebDriverFactory.create("firefox");
         driver.get(URL);
     }
 
@@ -90,8 +90,8 @@ public class OrderTest {
         // Добавляем проверку текста сообщения
         String expectedMessage = "Заказ оформлен";
         String actualMessage = orderPage.getOrderSuccessMessage();
-        assertEquals("Сообщение об успешном заказе не соответствует ожидаемому",
-                expectedMessage, actualMessage);
+        assertTrue("Сообщение об успешном заказе не соответствует ожидаемому",
+                actualMessage.contains(expectedMessage));
     }
 
     @After

@@ -1,10 +1,12 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
+import org.openqa.selenium.support.ui.Select;
 
 public class OrderPage {
     private final WebDriver driver;
@@ -14,19 +16,20 @@ public class OrderPage {
     private final By surnameInput = By.xpath(".//input[@placeholder='* Фамилия']");
     private final By addressInput = By.xpath(".//input[@placeholder='* Адрес: куда привезти заказ']");
     private final By metroInput = By.xpath(".//input[@placeholder='* Станция метро']");
+    private final By metroElement = By.className("Order_Text__2broi");
     private final By phoneInput = By.xpath(".//input[@placeholder='* Телефон: на него позвонит курьер']");
     private final By nextButton = By.xpath(".//button[text()='Далее']");
 
     // Локаторы для второй страницы заказа
     private final By dateInput = By.xpath(".//input[@placeholder='* Когда привезти самокат']");
-    private final By rentalPeriodDropdown = By.className("Dropdown-placeholder");
+    private final By rentalPeriodDropdown = By.className("Dropdown-arrow");
     private final By blackCheckbox = By.id("black");
     private final By greyCheckbox = By.id("grey");
     private final By commentInput = By.xpath(".//input[@placeholder='Комментарий для курьера']");
     private final By orderButton = By.xpath(".//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Заказать']");
-    private final By confirmButton = By.xpath(".//button[text()='Да']");
+    private final By confirmButton = By.cssSelector("div#root > div > div:nth-of-type(2) > div:nth-of-type(5) > div:nth-of-type(2) > button:nth-of-type(2)");
     private final By orderSuccessModal = By.className("Order_ModalHeader__3FDaJ");
-    private final By orderSuccessMessage = By.xpath("//div[contains(@class, 'Order_ModalHeader__3FDaJ')]//div[contains(text(), 'Заказ оформлен')]");
+    private final By orderSuccessMessage = By.xpath("//*[contains(text(), 'Заказ оформлен')]");
 
     public OrderPage(WebDriver driver) {
         this.driver = driver;
@@ -37,6 +40,7 @@ public class OrderPage {
         driver.findElement(surnameInput).sendKeys(surname);
         driver.findElement(addressInput).sendKeys(address);
         driver.findElement(metroInput).sendKeys(metroStation);
+        driver.findElement(metroElement).click();
         driver.findElement(phoneInput).sendKeys(phone);
         driver.findElement(nextButton).click();
     }

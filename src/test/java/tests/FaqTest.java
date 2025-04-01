@@ -40,7 +40,7 @@ public class FaqTest {
 
     @Before
     public void setUp() {
-        driver = WebDriverFactory.create("chrome");
+        driver = WebDriverFactory.create("firefox");
         driver.get(URL);
     }
 

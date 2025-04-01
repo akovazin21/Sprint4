@@ -17,7 +17,7 @@ public class NavigationTest {
 
     @Before
     public void setUp() {
-        driver = WebDriverFactory.create("chrome");
+        driver = WebDriverFactory.create("firefox");
         driver.get(URL);
     }
 
